@@ -78,7 +78,7 @@ if (DOWNLOAD_TRILINOS)
   
   if (NOT EXISTS "${CTEST_SOURCE_DIRECTORY}/Trilinos")
     execute_process (COMMAND "${CTEST_GIT_COMMAND}" 
-      clone ${Trilinos_REPOSITORY_LOCATION} ${CTEST_SOURCE_DIRECTORY}/Trilinos
+      clone ${Trilinos_REPOSITORY_LOCATION} -b develop ${CTEST_SOURCE_DIRECTORY}/Trilinos
       OUTPUT_VARIABLE _out
       ERROR_VARIABLE _err
       RESULT_VARIABLE HAD_ERROR)
@@ -226,6 +226,7 @@ if (BUILD_TRILINOS)
     "-DTrilinos_ENABLE_STKIO:BOOL=ON"
     "-DTrilinos_ENABLE_STKMesh:BOOL=ON"
     "-DTrilinos_ENABLE_SEACASExodus:BOOL=ON"
+    "-DTrilinos_ENABLE_SEACASAprepro_lib:BOOL=ON"
     "-DTrilinos_ENABLE_Teko:BOOL=ON"
     "-DTPL_FIND_SHARED_LIBS:BOOL=OFF"
     "-DBUILD_SHARED_LIBS:BOOL=OFF"
